@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  th:replace="~{normal/base::layout(~{::section})}">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    
+
+    <title th:text="${title}"></title>
+  </head>
+  <body>
+  
+  
+    <section>
+    
+
+    <div class="card mr-4">
+    <div class="card-body">
+    <h3 class="text-center">Your Contacts</h3>
+    
+    <!-- Seacrh Bar -->
+    
+    <div class="search-container-my-3">
+    
+    <input onKeyup="searchkro()" type="text" id="search-input" class="form-control" placeholder="Search Your contact" />
+    
+    <div class="search-result">
+    
+    
+    
+    </div>
+    
+    </div>
+    
+    <div class="table-responsive">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+       <th scope="col">Action</th>
+    </tr>
+  </thead>
+  
+  
+  <tbody>
+    <tr th:each="c : ${contacts}">
+      <th  th:text="${c.cId}" scope="row"></th>
+      
+      <td>
+    <img  class="my_profile_picture" src="" th:src="@{ ${c.imageUrl}}" alt="profile-photo">
+  
+        <span  th:text="${c.name}"></span></td>
+      
+      <td>
+      <a href="" th:href="@{'/user/'+${c.cId}+'/contact'}">
+      <span th:text="${c.email}"></span></a></td>
+      <td th:text="${c.phone}"></td>
+      <td>
+      
+      <a href="#" th:onclick="'deleteContact(' + ${c.cId} + ')'" class="btn btn-danger">Delete</a>
+      
+      <form method="post" th:action="@{'/user/update-contact/' + ${c.cId}}" class="mt-2">
+       <button class="btn btn-success ">update</button>
+      </form>
+      </td>
+    </tr>
+    
+    
+    
+     
+  </tbody>
+</table>
+   </div> 
+    
+    
+    </div>
+    </div>
+    
+    
+    
+    <script>
+    
+    $(document).ready(()=>{
+      $(".item").removeClass("active");
+      $("#contacts-link").addClass("active")
+    })
+    
+    </script>
+    
+    
+    
+    
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    
+    
+    
+    
+  </body>
+</html>

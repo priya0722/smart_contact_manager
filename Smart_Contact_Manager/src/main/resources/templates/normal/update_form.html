@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  th:replace="~{normal/base::layout(~{::section})}">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    
+
+    <title th:text="${title}"></title>
+  </head>
+  <body>
+  
+  
+    <section>
+    
+
+   
+    
+      <div class="card mr-4 ml-4 mb-5">
+    <div class="card-body">
+    
+    <h3 class="text-center">Update Your Contact</h3>
+    
+    
+    
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-8 offset-md-2">
+    
+    <form action="#" th:object="${contact}" enctype="multipart/form-data" method="POST" th:action="@{/user/process-update}" class="mt-2">
+    
+    <!-- it is hidden but used  so that we can pass cId as post while submitting so that we can access cId in process handler -->
+    <input type="hidden" th:value="${contact.cId}" name="cId"/>
+    
+    <!-- Name fiels -->
+    <div class="input-group mb-2 ">
+    <div class="input-group-prepend ">
+    
+     <div class="input-group-text"> <i class="fa fa-plus "></i>  </div>
+        </div>
+        <input th:value="${contact.name}" required type="text" name="name" id="firstName" placeholder="Enter Name here" class="form-control ">
+      </div>
+      
+      
+      
+      
+      <!-- SecondName fiels -->
+    <div class="input-group mb-2 ">
+    <div class="input-group-prepend ">
+    
+     <div class="input-group-text "> <i class="fas fa-user-alt "></i>  </div>
+        </div>
+        <input th:value="${contact.secondName}" required type="text" name="secondName" id="second Name" placeholder="Enter SecondName here" class="form-control ">
+      </div>
+
+
+
+ <!-- Phone fiels -->
+    <div class="input-group mb-2 ">
+    <div class="input-group-prepend ">
+    
+     <div class="input-group-text "> <i class="fa fa-phone "></i>  </div>
+        </div>
+        <input th:value="${contact.Phone}" required min=10  type="number" name="phone" id="phone" placeholder="Enter Phone Number" class="form-control ">
+      </div>
+
+      
+      
+      
+      <!-- Email fiels -->
+    <div class="input-group mb-2 ">
+    <div class="input-group-prepend ">
+    
+     <div class="input-group-text "> @ </i>  </div>
+        </div>
+        <input th:value="${contact.email}" required type="email" name="email" id="email" placeholder="Enter Email here" class="form-control ">
+      </div>
+      
+      
+      
+      <!-- work fiels -->
+    <div class="input-group mb-2 ">
+    <div class="input-group-prepend ">
+    
+     <div class="input-group-text "> <i class="fa fa-briefcase "></i>  </div>
+        </div>
+        <input th:value="${contact.work}" required type="text" name="work" id="work" placeholder="Enter Work" class="form-control ">
+      </div>
+      
+      
+      <!-- description -->
+      
+      <div class="form-group">
+      
+      <textarea th:text="${contact.description}" name="description" id="description" cols="15" rows="10" class="form-control" placeholder="Enter contact description"></textarea>
+      </div>
+      
+      
+      <!-- Contact image -->
+      
+      <div class="container text-center">
+      <img style="width:100px; height:100px" class="my_profile_picture" src="" th:src="@{'/images/'+${contact.imageUrl}}">
+      </div>
+      
+      <div class="custom-file" >
+     <p> Upload new Profile pic </p>
+      <input type="file" name="profile-image"> 
+      </div>
+      
+      <div class="container text-center mb-2">
+      <button class="btn-outline-primary">Save Contact</button>
+      </div>
+      
+      </form>
+      
+      </div>
+      </div>
+      </div>
+    </div>
+    </div>
+    
+    
+    
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
