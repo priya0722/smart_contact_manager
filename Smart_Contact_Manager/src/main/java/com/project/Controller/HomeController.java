@@ -101,7 +101,7 @@ public class HomeController {
 			    "\n\nThis code will remain active for the next 10 minutes. Please use it on our site or app to proceed." + 
 			    "\n\nIf you did not request this code, you can ignore this message." + 
 			    "\n\nFor any questions or assistance, feel free to contact us here at this gmail" + 
-			    "\n\nBest regards,\nAnkit Raj\nSmartContactManager Support Team";
+			    "\n\nBest regards,\nPriya sinha\nSmartContactManager Support Team";
 
 	
 		this.emailservice.sendMail(receiver, subject, content);
